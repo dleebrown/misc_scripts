@@ -3,7 +3,7 @@
 import os
 
 # set the directory containing the text files
-directory = '/home/donald/current_work/reduced_thesis_spectra_0118/text_cf_spectra'
+directory = '/home/donald/current_work/MY_THESIS/reduced_thesis_spectra_0118/text_cf_spectra_clean'
 
 filenames = os.listdir(directory)
 
