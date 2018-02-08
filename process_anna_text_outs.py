@@ -4,7 +4,7 @@ import os
 import numpy as np
 
 # set the directory containing the text files
-directory = '/home/donald/current_work/MY_THESIS/cleaned_r1'
+directory = '/home/donald/current_work/MY_THESIS/thesis_anna_infer_r6'
 
 filenames = os.listdir(directory)
 
