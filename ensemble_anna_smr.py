@@ -5,6 +5,7 @@ the concatenated outputs as well as the solar benchmark should be in the same fo
 
 import numpy as np
 import collections
+import math
 
 # define the various directories and standardized file names
 parent_dir = '/home/donald/current_work/MY_THESIS/'
@@ -94,8 +95,22 @@ weight_stemp_std = np.sum(weight_solar_temp_std)
 weight_smet = np.sum(weighted_solar_metals)
 weight_smet_std = np.sum(weight_solar_metal_std)
 
+# now i need to compute the solar weighted model uncertainties
+temp_weight_temp = []
+temp_weight_met = []
+for i in range(6):
+    temp_weight_temp.append(weight_values[0, i]*(weight_stemp - solar_temp_stats[0, i])**2)
+    temp_weight_met.append(weight_values[1, i]*(weight_smet - solar_metal_stats[1, i])**2)
+
+solar_model_etemp = np.sqrt(np.sum(temp_weight_temp)/(5.0/6.0))
+solar_model_emet = np.sqrt(np.sum(temp_weight_met)/(5.0/6.0))
+
+# combine these model uncertainties in quadrature with the statistical uncertainties
+solar_temp_uncertainty = math.sqrt((solar_model_etemp**2+weight_stemp_std**2))
+solar_metal_uncertainty = math.sqrt((solar_model_emet**2+weight_smet_std**2))
+
 print(weight_stemp, weight_smet)
-print(weight_stemp_std, weight_smet_std)
+print(solar_temp_uncertainty, solar_metal_uncertainty)
 
 # okay that all looks very nice now apply the weights to the smr stars and compute the weighted stdev too
 
