@@ -78,6 +78,11 @@ for i in range(6):
 weight_values[0, :] = weight_values[0, :]/np.sum(weight_values[0, :])
 weight_values[1, :] = weight_values[1, :]/np.sum(weight_values[1, :])
 
+
+print(weight_values)
+print(solar_temp_stats)
+print(solar_metal_stats)
+
 # now as a check compute the weighted solar temperature and metallicity with stat uncertainties
 weighted_solar_temps = []
 weight_solar_temp_std = []
