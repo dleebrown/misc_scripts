@@ -100,6 +100,10 @@ weight_stemp_std = np.sum(weight_solar_temp_std)
 weight_smet = np.sum(weighted_solar_metals)
 weight_smet_std = np.sum(weight_solar_metal_std)
 
+print('solar stat errors')
+print(weight_stemp_std)
+print(weight_smet_std)
+
 # now i need to compute the solar weighted model uncertainties
 temp_weight_temp = []
 temp_weight_met = []
@@ -109,6 +113,10 @@ for i in range(6):
 
 solar_model_etemp = np.sqrt(np.sum(temp_weight_temp)/(5.0/6.0))
 solar_model_emet = np.sqrt(np.sum(temp_weight_met)/(5.0/6.0))
+
+print('solar model errors')
+print(solar_model_etemp)
+print(solar_model_emet)
 
 # combine these model uncertainties in quadrature with the statistical uncertainties
 solar_temp_uncertainty = math.sqrt((solar_model_etemp**2+weight_stemp_std**2))
